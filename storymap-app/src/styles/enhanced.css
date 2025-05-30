@@ -1,0 +1,320 @@
+/* Enhanced CSS for StoryMap application */
+
+/* Custom map styling */
+.light-map {
+  --map-accent: #3b82f6;
+  --map-marker-glow: rgba(59, 130, 246, 0.5);
+}
+
+.dark-map {
+  --map-accent: #60a5fa;
+  --map-marker-glow: rgba(96, 165, 250, 0.5);
+}
+
+/* Map loading indicator */
+.map-loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+.dark-map .map-loading-indicator {
+  background-color: rgba(31, 41, 55, 0.9);
+  color: #f3f4f6;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+.dark-map .loading-spinner {
+  border-color: rgba(96, 165, 250, 0.3);
+  border-top-color: #60a5fa;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* Custom map controls */
+.mapboxgl-ctrl-group {
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark-map .mapboxgl-ctrl-group {
+  background-color: #1f2937 !important;
+}
+
+.dark-map .mapboxgl-ctrl-group button {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+
+.dark-map .mapboxgl-ctrl-group button span {
+  filter: invert(1);
+}
+
+/* Custom popup styling */
+.custom-popup .mapboxgl-popup-content {
+  padding: 0 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.custom-popup.dark-mode .mapboxgl-popup-content {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+
+.custom-popup .mapboxgl-popup-close-button {
+  color: white !important;
+  font-size: 1.25rem !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.custom-popup .mapboxgl-popup-tip {
+  border-top-color: white !important;
+}
+
+.custom-popup.dark-mode .mapboxgl-popup-tip {
+  border-top-color: #1f2937 !important;
+}
+
+/* Story marker pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--map-marker-glow);
+  }
+  
+  70% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.story-marker.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Story card enhancements */
+.story-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.story-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease forwards;
+}
+
+/* Staggered animations */
+.stagger-1 {
+  animation-delay: 0.2s;
+}
+
+.stagger-2 {
+  animation-delay: 0.4s;
+}
+
+.stagger-3 {
+  animation-delay: 0.6s;
+}
+
+/* Reader mode enhancements */
+.reader-mode {
+  background-color: #f9fafb;
+  color: #1f2937;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.reader-mode.dark-mode {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+/* Cultural context panel */
+.cultural-context {
+  background-color: rgba(243, 244, 246, 0.5);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.dark-mode .cultural-context {
+  background-color: rgba(31, 41, 55, 0.5);
+}
+
+.cultural-context::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-size: 4rem;
+  font-family: Georgia, serif;
+  color: rgba(59, 130, 246, 0.2);
+  line-height: 1;
+}
+
+.dark-mode .cultural-context::before {
+  color: rgba(96, 165, 250, 0.2);
+}
+
+/* Theme tags */
+.theme-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  padding: 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .story-card {
+    margin-bottom: 1rem;
+  }
+  
+  .reader-mode {
+    padding: 1rem;
+  }
+}
+
+/* Immersive transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.5);
+  border-radius: 20px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
