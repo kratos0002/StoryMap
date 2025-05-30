@@ -1,0 +1,144 @@
+{
+  "successful": [
+    {
+      "id": "9bfb504f-f731-4001-b2c0-01217de157d1",
+      "title": "The Legend of Sleepy Hollow",
+      "content_length": 70471,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/9bfb504f-f731-4001-b2c0-01217de157d1.txt"
+    },
+    {
+      "id": "4d6463c6-9794-4b26-80c2-cccea416b544",
+      "title": "Rip Van Winkle",
+      "content_length": 70471,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/4d6463c6-9794-4b26-80c2-cccea416b544.txt"
+    },
+    {
+      "id": "d67fb0ef-a09f-476d-8543-72c44545f11d",
+      "title": "The Yellow Wallpaper",
+      "content_length": 23761,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/d67fb0ef-a09f-476d-8543-72c44545f11d.txt"
+    },
+    {
+      "id": "2caf1b69-d04b-48c2-a2b1-056af69d7ee4",
+      "title": "The Most Dangerous Game",
+      "content_length": 170259,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/2caf1b69-d04b-48c2-a2b1-056af69d7ee4.txt"
+    },
+    {
+      "id": "ee364418-59f6-4a5c-b61e-e19060e1944f",
+      "title": "The Story of the Late Mr. Elvesham",
+      "content_length": 922410,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/ee364418-59f6-4a5c-b61e-e19060e1944f.txt"
+    },
+    {
+      "id": "d00a72c9-4c8f-44a9-9e4f-e77bd3c50827",
+      "title": "The Open Window",
+      "content_length": 327271,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/d00a72c9-4c8f-44a9-9e4f-e77bd3c50827.txt"
+    },
+    {
+      "id": "61bf51df-ccb5-4623-b1d4-c2a71dc3b136",
+      "title": "The Signal-Man",
+      "content_length": 111004,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/61bf51df-ccb5-4623-b1d4-c2a71dc3b136.txt"
+    },
+    {
+      "id": "cbd83e9f-3d67-42b4-b9b7-2f43b116e644",
+      "title": "The Lady with the Dog",
+      "content_length": 370498,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/cbd83e9f-3d67-42b4-b9b7-2f43b116e644.txt"
+    },
+    {
+      "id": "3278ce81-d985-4637-988e-77d7c8b20664",
+      "title": "The Nose",
+      "content_length": 295989,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/3278ce81-d985-4637-988e-77d7c8b20664.txt"
+    },
+    {
+      "id": "ddfa649e-934c-4cf8-91c4-1e05cdc4d2f0",
+      "title": "The Queen of Spades",
+      "content_length": 302352,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/ddfa649e-934c-4cf8-91c4-1e05cdc4d2f0.txt"
+    },
+    {
+      "id": "d5bc880b-89e3-4eb8-82b6-f4e63f99edc3",
+      "title": "The Overcoat",
+      "content_length": 295989,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/d5bc880b-89e3-4eb8-82b6-f4e63f99edc3.txt"
+    },
+    {
+      "id": "6b5a5bab-cb6d-4c60-9071-cb95b01bf8ca",
+      "title": "The Necklace",
+      "content_length": 2620107,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/6b5a5bab-cb6d-4c60-9071-cb95b01bf8ca.txt"
+    },
+    {
+      "id": "47483ce4-df10-44b3-81b8-ab924b78ab8b",
+      "title": "Ball of Fat",
+      "content_length": 2620107,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/47483ce4-df10-44b3-81b8-ab924b78ab8b.txt"
+    },
+    {
+      "id": "37175469-a552-4750-a691-1f066ed2a616",
+      "title": "The Metamorphosis",
+      "content_length": 38505,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/37175469-a552-4750-a691-1f066ed2a616.txt"
+    },
+    {
+      "id": "affcd6f7-8336-4784-9dfe-4231bc1e20f6",
+      "title": "In a Grove",
+      "content_length": 350272,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/affcd6f7-8336-4784-9dfe-4231bc1e20f6.txt"
+    },
+    {
+      "id": "cc6b25c3-51f9-4ae7-87ed-800191fdcd0d",
+      "title": "Rashomon",
+      "content_length": 350272,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/cc6b25c3-51f9-4ae7-87ed-800191fdcd0d.txt"
+    },
+    {
+      "id": "eb428426-4daa-4d37-9423-55ef0a84d874",
+      "title": "The True Story of Ah Q",
+      "content_length": 764724,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/eb428426-4daa-4d37-9423-55ef0a84d874.txt"
+    },
+    {
+      "id": "1fc97f86-7be1-42f9-a07a-eb9f53c7e089",
+      "title": "The Arabian Nights (Selected Tales)",
+      "content_length": 583292,
+      "file_path": "/home/ubuntu/StoryMapProject/docs/supabase_scripts/story_content/1fc97f86-7be1-42f9-a07a-eb9f53c7e089.txt"
+    }
+  ],
+  "failed": [
+    {
+      "id": "0d82745c-b2ad-4e60-aff7-485d641a7d2d",
+      "title": "The Birthmark",
+      "reason": "Content extraction failed"
+    },
+    {
+      "id": "7310009c-d0e4-41a4-8aa3-86017ac3da36",
+      "title": "To Build a Fire",
+      "reason": "Content extraction failed"
+    },
+    {
+      "id": "04b5f2ad-63a4-436a-8bfd-deb328b7ce6c",
+      "title": "The Monkey's Paw",
+      "reason": "Content extraction failed"
+    },
+    {
+      "id": "f264e91e-0409-4ffd-ade4-e5a9288d6bbb",
+      "title": "The Last Lesson",
+      "reason": "Content extraction failed"
+    },
+    {
+      "id": "ef9b6828-f33d-4d2e-823b-7672a73bf6c4",
+      "title": "A Hunger Artist",
+      "reason": "Content extraction failed"
+    },
+    {
+      "id": "9978a430-3d60-4686-9879-d8a1b0d0afb2",
+      "title": "Why the Sun and the Moon Live in the Sky",
+      "reason": "Content extraction failed"
+    }
+  ]
+}

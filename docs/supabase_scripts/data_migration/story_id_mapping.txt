@@ -1,0 +1,32 @@
+# Story ID Mapping
+# Original ID -> UUID
+
+mountain-secret -> 7c319cc6-eeda-44c6-9dae-e3a44d685901
+river-spirits -> 3cffbe49-2130-4819-a35e-b96558d87f10
+city-of-dreams -> f4a55f7e-58d7-4b20-a413-d413940df855
+tell-tale-heart -> 753a84b5-7f05-4aac-a888-e94840161dd8
+gift-of-the-magi -> 2f5f23bc-7958-4bbf-a1a1-ca4fedb5bb5b
+legend-of-sleepy-hollow -> 9bfb504f-f731-4001-b2c0-01217de157d1
+rip-van-winkle -> 4d6463c6-9794-4b26-80c2-cccea416b544
+yellow-wallpaper -> d67fb0ef-a09f-476d-8543-72c44545f11d
+the-birthmark -> 0d82745c-b2ad-4e60-aff7-485d641a7d2d
+to-build-a-fire -> 7310009c-d0e4-41a4-8aa3-86017ac3da36
+most-dangerous-game -> 2caf1b69-d04b-48c2-a2b1-056af69d7ee4
+monkeys-paw -> 04b5f2ad-63a4-436a-8bfd-deb328b7ce6c
+mr-elvesham -> ee364418-59f6-4a5c-b61e-e19060e1944f
+open-window -> d00a72c9-4c8f-44a9-9e4f-e77bd3c50827
+signal-man -> 61bf51df-ccb5-4623-b1d4-c2a71dc3b136
+lady-with-dog -> cbd83e9f-3d67-42b4-b9b7-2f43b116e644
+the-nose -> 3278ce81-d985-4637-988e-77d7c8b20664
+queen-of-spades -> ddfa649e-934c-4cf8-91c4-1e05cdc4d2f0
+the-overcoat -> d5bc880b-89e3-4eb8-82b6-f4e63f99edc3
+the-necklace -> 6b5a5bab-cb6d-4c60-9071-cb95b01bf8ca
+ball-of-fat -> 47483ce4-df10-44b3-81b8-ab924b78ab8b
+last-lesson -> f264e91e-0409-4ffd-ade4-e5a9288d6bbb
+hunger-artist -> ef9b6828-f33d-4d2e-823b-7672a73bf6c4
+metamorphosis -> 37175469-a552-4750-a691-1f066ed2a616
+in-a-grove -> affcd6f7-8336-4784-9dfe-4231bc1e20f6
+rashomon -> cc6b25c3-51f9-4ae7-87ed-800191fdcd0d
+true-story-of-ah-q -> eb428426-4daa-4d37-9423-55ef0a84d874
+arabian-nights-selected -> 1fc97f86-7be1-42f9-a07a-eb9f53c7e089
+sun-moon-sky -> 9978a430-3d60-4686-9879-d8a1b0d0afb2

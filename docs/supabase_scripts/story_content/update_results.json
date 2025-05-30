@@ -1,0 +1,95 @@
+{
+  "successful": [],
+  "failed": [
+    {
+      "id": "9bfb504f-f731-4001-b2c0-01217de157d1",
+      "title": "The Legend of Sleepy Hollow",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "4d6463c6-9794-4b26-80c2-cccea416b544",
+      "title": "Rip Van Winkle",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "d67fb0ef-a09f-476d-8543-72c44545f11d",
+      "title": "The Yellow Wallpaper",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "2caf1b69-d04b-48c2-a2b1-056af69d7ee4",
+      "title": "The Most Dangerous Game",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "ee364418-59f6-4a5c-b61e-e19060e1944f",
+      "title": "The Story of the Late Mr. Elvesham",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "d00a72c9-4c8f-44a9-9e4f-e77bd3c50827",
+      "title": "The Open Window",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "61bf51df-ccb5-4623-b1d4-c2a71dc3b136",
+      "title": "The Signal-Man",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "cbd83e9f-3d67-42b4-b9b7-2f43b116e644",
+      "title": "The Lady with the Dog",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "3278ce81-d985-4637-988e-77d7c8b20664",
+      "title": "The Nose",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "ddfa649e-934c-4cf8-91c4-1e05cdc4d2f0",
+      "title": "The Queen of Spades",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "d5bc880b-89e3-4eb8-82b6-f4e63f99edc3",
+      "title": "The Overcoat",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "6b5a5bab-cb6d-4c60-9071-cb95b01bf8ca",
+      "title": "The Necklace",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "47483ce4-df10-44b3-81b8-ab924b78ab8b",
+      "title": "Ball of Fat",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "37175469-a552-4750-a691-1f066ed2a616",
+      "title": "The Metamorphosis",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "affcd6f7-8336-4784-9dfe-4231bc1e20f6",
+      "title": "In a Grove",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "cc6b25c3-51f9-4ae7-87ed-800191fdcd0d",
+      "title": "Rashomon",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "eb428426-4daa-4d37-9423-55ef0a84d874",
+      "title": "The True Story of Ah Q",
+      "reason": "No rows updated"
+    },
+    {
+      "id": "1fc97f86-7be1-42f9-a07a-eb9f53c7e089",
+      "title": "The Arabian Nights (Selected Tales)",
+      "reason": "No rows updated"
+    }
+  ]
+}
