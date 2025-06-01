@@ -4,3 +4,4 @@ dist/
 *.log
 .env
 .vscode/
+storymap-app/datastories/stories.csv

@@ -1,0 +1,42 @@
+[
+  {
+    "story": "The Gift of the Magi",
+    "error": "[Hyperbrowser]: Maximum number of active sessions (1) reached. Please close some sessions or upgrade your plan.",
+    "phase": "enrichment"
+  },
+  {
+    "story": "The Yellow Wallpaper",
+    "error": "[Hyperbrowser]: Maximum number of active sessions (1) reached. Please close some sessions or upgrade your plan.",
+    "phase": "enrichment"
+  },
+  {
+    "story": "The Most Dangerous Game",
+    "error": "[Hyperbrowser]: Maximum number of active sessions (1) reached. Please close some sessions or upgrade your plan.",
+    "phase": "enrichment"
+  },
+  {
+    "story": "The Monkey's Paw",
+    "error": "[Hyperbrowser]: Maximum number of active sessions (1) reached. Please close some sessions or upgrade your plan.",
+    "phase": "enrichment"
+  },
+  {
+    "story": "The Gift of the Magi",
+    "error": "new row violates row-level security policy for table \"stories\"",
+    "phase": "database_storage"
+  },
+  {
+    "story": "The Yellow Wallpaper",
+    "error": "new row violates row-level security policy for table \"stories\"",
+    "phase": "database_storage"
+  },
+  {
+    "story": "The Most Dangerous Game",
+    "error": "new row violates row-level security policy for table \"stories\"",
+    "phase": "database_storage"
+  },
+  {
+    "story": "The Monkey's Paw",
+    "error": "new row violates row-level security policy for table \"stories\"",
+    "phase": "database_storage"
+  }
+]

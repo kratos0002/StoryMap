@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "storymap-supabase": {
+      "command": "node",
+      "args": ["mcp-server/supabase-server.js"],
+      "env": {
+        "SUPABASE_URL": "${env:SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${env:SUPABASE_SERVICE_ROLE_KEY}",
+        "SUPABASE_ANON_KEY": "${env:SUPABASE_ANON_KEY}"
+      },
+      "description": "StoryMap Supabase database integration for real-time database access"
+    }
+  }
+} 

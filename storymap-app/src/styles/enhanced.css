@@ -127,8 +127,52 @@
   }
 }
 
+/* Enhanced marker positioning and centering */
+.story-marker {
+  /* Ensure the marker stays centered within its wrapper */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  /* Prevent any layout shifts */
+  box-sizing: border-box !important;
+  /* Ensure smooth transitions */
+  will-change: transform !important;
+  /* Remove any default margins/padding */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .story-marker.animate-pulse {
   animation: pulse 2s infinite;
+}
+
+/* Ensure Mapbox markers don't move when scaling */
+.mapboxgl-marker {
+  /* Prevent any positioning issues */
+  will-change: transform !important;
+}
+
+/* Ensure the wrapper maintains proper positioning */
+.mapboxgl-marker > div {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Override any Mapbox default positioning that might interfere */
+.mapboxgl-marker .mapboxgl-marker-anchor-center {
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Ensure markers maintain their position during hover */
+.story-marker:hover {
+  /* Keep the same centering during hover, just add scale */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  /* The transform will be handled by JavaScript with scale */
 }
 
 /* Story card enhancements */
@@ -210,6 +254,8 @@
   background-color: #f9fafb;
   color: #1f2937;
   transition: background-color 0.5s ease, color 0.5s ease;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .reader-mode.dark-mode {
@@ -308,6 +354,25 @@
 
 .dark-mode ::-webkit-scrollbar-thumb {
   background-color: rgba(156, 163, 175, 0.3);
+}
+
+/* Story reader scrolling improvements */
+.reader-mode .story-content {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper scrolling on mobile */
+.reader-mode {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Fix for iOS scrolling issues */
+@supports (-webkit-touch-callout: none) {
+  .reader-mode {
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+  }
 }
 
 /* Spinner animation */

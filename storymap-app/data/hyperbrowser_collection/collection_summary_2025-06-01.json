@@ -1,0 +1,10 @@
+{
+  "collection_date": "2025-06-01T13:44:23.046Z",
+  "total_collected": 0,
+  "total_excluded": 6,
+  "total_errors": 8,
+  "target_count": 100,
+  "completion_percentage": "0.0",
+  "hyperbrowser_ai_used": true,
+  "collection_method": "HyperBrowser AI + Supabase"
+}

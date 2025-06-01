@@ -1,0 +1,67 @@
+[
+  {
+    "phase": "database_storage",
+    "story": "Grimms' Fairy Tales",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "The Awakening, and Selected Short Stories",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "The Life and Adventures of Robinson Crusoe",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "Just So Stories",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "Southern Horrors: Lynch Law in All Its Phases",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "Folk-Tales of the Khasis",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "The Red House Mystery",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "Eugene Oneguine [Onegin]\r\nA Romance of Russian Life in Verse",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "The Short-story",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "\"Lest We Forget\": Chicago's Awful Theater Horror",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "A Memoir of Robert Blincoe, an Orphan Boy\r\nSent from the workhouse of St. Pancras, London, at seven years of age, to endure the horrors of a cotton-mill, through his infancy and youth, with a minute detail of his sufferings, being the first memoir of the kind published.",
+    "error": "TypeError: fetch failed"
+  },
+  {
+    "phase": "database_storage",
+    "story": "The Mysterious Murder of Pearl Bryan, or: the Headless Horror.",
+    "error": "unsupported Unicode escape sequence"
+  },
+  {
+    "phase": "database_storage",
+    "story": "The Complete Story of the Galveston Horror",
+    "error": "unsupported Unicode escape sequence"
+  }
+]

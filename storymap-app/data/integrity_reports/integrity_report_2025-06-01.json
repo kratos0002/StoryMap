@@ -1,0 +1,178 @@
+{
+  "timestamp": "2025-06-01T16:43:09.654Z",
+  "issues": [
+    {
+      "type": "orphaned_locations",
+      "count": 25,
+      "data": [
+        {
+          "id": "eb0c0d01-5bef-47e7-83a4-a11e8403444b",
+          "name": "Nepal",
+          "story_locations": []
+        },
+        {
+          "id": "04515265-ffcd-4a8d-a20e-e1498d54a1bf",
+          "name": "Brazil",
+          "story_locations": []
+        },
+        {
+          "id": "6930aa4c-f304-40d9-bd06-c6940f78a7f3",
+          "name": "Japan",
+          "story_locations": []
+        },
+        {
+          "id": "8d989653-0ffd-42a6-9da2-b66a7d58ec22",
+          "name": "United States",
+          "story_locations": []
+        },
+        {
+          "id": "6202afe3-c443-4ce6-8b50-a00ab0df3e20",
+          "name": "United States",
+          "story_locations": []
+        },
+        {
+          "id": "29c4aa59-2355-4288-8db3-5cee4458d6c4",
+          "name": "United States",
+          "story_locations": []
+        },
+        {
+          "id": "df1a2da9-e7c1-4ceb-bbd5-54427052b261",
+          "name": "United States",
+          "story_locations": []
+        },
+        {
+          "id": "ee3343b9-1a77-42d9-9382-10e8b10b86c1",
+          "name": "United States",
+          "story_locations": []
+        },
+        {
+          "id": "3b4879f0-a168-4156-a6fb-3cf208576a73",
+          "name": "United States",
+          "story_locations": []
+        },
+        {
+          "id": "5005ac89-2350-4564-b30d-a7e3689baa37",
+          "name": "Canada",
+          "story_locations": []
+        },
+        {
+          "id": "cf6e2852-8852-40cb-93ba-a775833fc359",
+          "name": "Caribbean",
+          "story_locations": []
+        },
+        {
+          "id": "186dec44-309b-49ef-8d16-a24568e9fcb2",
+          "name": "England",
+          "story_locations": []
+        },
+        {
+          "id": "b3ae1439-668d-4799-b6ae-4197e68efc31",
+          "name": "England",
+          "story_locations": []
+        },
+        {
+          "id": "61c0a130-3400-4eb8-901d-12febf8b57dd",
+          "name": "England",
+          "story_locations": []
+        },
+        {
+          "id": "ad229170-403f-4277-8dcf-69049bc88d5b",
+          "name": "Russia",
+          "story_locations": []
+        },
+        {
+          "id": "9ff1e26b-0fbb-41ff-8d91-8d7afb579f49",
+          "name": "Russia",
+          "story_locations": []
+        },
+        {
+          "id": "5d03e8be-0fea-47cc-9e2a-fdebf267692b",
+          "name": "France",
+          "story_locations": []
+        },
+        {
+          "id": "35a4aa18-bdb3-4f87-a029-ed1f0bfe9b6a",
+          "name": "France",
+          "story_locations": []
+        },
+        {
+          "id": "bc66d580-1023-4fd7-b5cf-a45d4dfcdd55",
+          "name": "France",
+          "story_locations": []
+        },
+        {
+          "id": "7addc914-01b9-4488-9a53-9061ae5dfffb",
+          "name": "Austria-Hungary",
+          "story_locations": []
+        },
+        {
+          "id": "6321d5ef-c707-443f-99fb-c1ee75ef0bbb",
+          "name": "Japan",
+          "story_locations": []
+        },
+        {
+          "id": "56355b4d-f4f8-4ef7-92c8-8dd9f0288c7e",
+          "name": "Japan",
+          "story_locations": []
+        },
+        {
+          "id": "32cb6b83-4e1c-464e-9619-d2bf0eca1bc3",
+          "name": "China",
+          "story_locations": []
+        },
+        {
+          "id": "c392a103-cfaf-40bb-88d2-55634a6d7f38",
+          "name": "Middle East",
+          "story_locations": []
+        },
+        {
+          "id": "f9e6e689-38d3-4221-826a-c51a368d40a4",
+          "name": "Nigeria",
+          "story_locations": []
+        }
+      ],
+      "severity": "warning",
+      "description": "Locations not linked to any stories"
+    },
+    {
+      "type": "stories_without_locations",
+      "count": 5,
+      "data": [
+        {
+          "id": "c3bb7b19-76ce-4786-84c2-93c8b04b6589",
+          "title": "The Gift of the Magi",
+          "story_locations": []
+        },
+        {
+          "id": "c5394715-614a-4bf8-8c2b-8a63b4434f85",
+          "title": "The Yellow Wallpaper",
+          "story_locations": []
+        },
+        {
+          "id": "d799361e-f812-4275-83b4-3433b250a0c8",
+          "title": "Bartleby, the Scrivener",
+          "story_locations": []
+        },
+        {
+          "id": "4a588990-2053-43c7-b36c-009f6806c0ea",
+          "title": "The Fall of the House of Usher",
+          "story_locations": []
+        },
+        {
+          "id": "bab0b5ad-001a-47c4-a704-94edf33c097d",
+          "title": "The Necklace",
+          "story_locations": []
+        }
+      ],
+      "severity": "critical",
+      "description": "Stories without location data (will not appear in frontend)"
+    }
+  ],
+  "fixes": [],
+  "summary": {
+    "total_issues": 2,
+    "critical_issues": 1,
+    "warning_issues": 1,
+    "fixes_applied": 0
+  }
+}

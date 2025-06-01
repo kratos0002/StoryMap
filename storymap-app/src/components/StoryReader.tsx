@@ -56,7 +56,7 @@ const StoryReader: React.FC<StoryReaderProps> = ({ story, onClose, isDarkMode: p
     <div 
       className={`reader-mode font-${fontSize} min-h-screen w-full flex flex-col ${
         isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'
-      } transition-colors duration-300 overflow-hidden`}
+      } transition-colors duration-300`}
     >
       {/* Reader header - Fixed at the top */}
       <header className={`py-4 px-6 flex items-center justify-between border-b ${
@@ -143,8 +143,12 @@ const StoryReader: React.FC<StoryReaderProps> = ({ story, onClose, isDarkMode: p
       <div 
         className={`flex-1 overflow-y-auto px-4 md:px-8 py-6 ${
           isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
-        } transition-colors duration-300 h-[calc(100vh-4rem)]`}
-        style={{ WebkitOverflowScrolling: 'touch' }} // Improve scrolling on iOS
+        } transition-colors duration-300`}
+        style={{ 
+          WebkitOverflowScrolling: 'touch',
+          maxHeight: 'calc(100vh - 4rem)',
+          minHeight: 'calc(100vh - 4rem)'
+        }}
       >
         <div className={`max-w-3xl mx-auto ${isAnimating ? 'animate-fade-in' : ''}`}>
           {/* Story header */}

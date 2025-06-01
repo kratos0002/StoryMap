@@ -1,0 +1,20 @@
+{
+  "collection_date": "2025-06-01T14:25:57.301Z",
+  "method": "GnikDroy Gutenberg API",
+  "api_url": "https://gnikdroy.pythonanywhere.com/api",
+  "total_collected": 6,
+  "total_errors": 13,
+  "target_count": 100,
+  "completion_percentage": "6.0",
+  "statistics": {
+    "processed": 97,
+    "collected": 19,
+    "skipped": 78,
+    "errors": 0
+  },
+  "search_strategies": [
+    "keyword_search",
+    "author_search",
+    "popular_collections"
+  ]
+}

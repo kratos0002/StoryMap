@@ -1,17 +1,113 @@
-import { useState } from 'react';
-import { stories, Story } from '../data/stories';
+import { useState, useEffect } from 'react';
+import { fetchStories, Story as SupabaseStory } from '../lib/supabase';
 import StoryCard from './StoryCard';
 
-interface StoryListProps {
-  onStorySelect: (story: Story) => void;
-  isDarkMode?: boolean; // Added isDarkMode as optional prop
+// Legacy Story interface for list compatibility
+interface LegacyStory {
+  id: string;
+  title: string;
+  author: string;
+  country: string;
+  countryCode: string;
+  region: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  readingTimeMinutes: number;
+  themes: string[];
+  mood: string;
+  previewText: string;
+  fullText: string;
+  culturalContext: string;
+  imageUrl?: string;
 }
+
+interface StoryListProps {
+  onStorySelect: (story: LegacyStory) => void;
+  isDarkMode?: boolean;
+}
+
+// Helper function to transform Supabase story to legacy format
+const transformStoryForList = (supabaseStory: SupabaseStory): LegacyStory | null => {
+  // Get the first location (primary location)
+  const primaryLocation = supabaseStory.story_locations?.[0]?.location;
+  if (!primaryLocation) {
+    console.warn(`Story "${supabaseStory.title}" has no location data`);
+    return null;
+  }
+
+  // Get the first author
+  const primaryAuthor = supabaseStory.story_authors?.[0]?.author?.name || 'Unknown Author';
+
+  // Extract themes
+  const themes = supabaseStory.story_themes?.map(st => st.theme.name) || [];
+
+  // Get the first image
+  const imageUrl = supabaseStory.images?.[0]?.image_url;
+
+  // Get cultural context
+  const culturalContext = supabaseStory.cultural_contexts?.[0]?.context_text || 'No cultural context available';
+
+  // Extract mood from tags (assuming mood is stored as a tag)
+  const moodTag = supabaseStory.story_tags?.find(st => st.tag.category === 'mood');
+  const mood = moodTag?.tag.name || 'Unknown';
+
+  return {
+    id: supabaseStory.id,
+    title: supabaseStory.title,
+    author: primaryAuthor,
+    country: primaryLocation.name,
+    countryCode: primaryLocation.country_code,
+    region: primaryLocation.region,
+    coordinates: {
+      lat: primaryLocation.latitude,
+      lng: primaryLocation.longitude
+    },
+    readingTimeMinutes: supabaseStory.reading_time_minutes,
+    themes: themes,
+    mood: mood,
+    previewText: supabaseStory.summary || 'No preview available',
+    fullText: supabaseStory.original_text || 'Full text not available',
+    culturalContext: culturalContext,
+    imageUrl: imageUrl
+  };
+};
 
 const StoryList: React.FC<StoryListProps> = ({ onStorySelect, isDarkMode = false }) => {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isFilterExpanded, setIsFilterExpanded] = useState<boolean>(false);
+  const [stories, setStories] = useState<LegacyStory[]>([]);
+  const [isLoadingStories, setIsLoadingStories] = useState<boolean>(true);
+  const [storiesError, setStoriesError] = useState<string | null>(null);
+  
+  // Load stories from Supabase
+  useEffect(() => {
+    const loadStories = async () => {
+      try {
+        setIsLoadingStories(true);
+        setStoriesError(null);
+        const supabaseStories = await fetchStories();
+        
+        // Transform stories and filter out any that don't have location data
+        const transformedStories = supabaseStories
+          .map(transformStoryForList)
+          .filter((story): story is LegacyStory => story !== null);
+        
+        setStories(transformedStories);
+        console.log(`Loaded ${transformedStories.length} stories for list view`);
+      } catch (error) {
+        console.error('Error loading stories:', error);
+        setStoriesError('Failed to load stories from database');
+      } finally {
+        setIsLoadingStories(false);
+      }
+    };
+
+    loadStories();
+  }, []);
   
   // Extract all unique themes and regions
   const allThemes = Array.from(new Set(stories.flatMap(story => story.themes)));

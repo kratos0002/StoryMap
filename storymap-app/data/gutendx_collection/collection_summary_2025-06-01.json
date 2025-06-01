@@ -1,0 +1,27 @@
+{
+  "collection_date": "2025-06-01T14:14:12.608Z",
+  "method": "Gutendx API",
+  "api_url": "https://gutendex.com",
+  "total_collected": 0,
+  "total_errors": 10,
+  "target_count": 100,
+  "completion_percentage": "0.0",
+  "statistics": {
+    "processed": 0,
+    "collected": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "topics_searched": [
+    "short stories",
+    "fiction",
+    "mystery",
+    "horror",
+    "adventure",
+    "romance",
+    "science fiction",
+    "fantasy",
+    "detective",
+    "ghost stories"
+  ]
+}

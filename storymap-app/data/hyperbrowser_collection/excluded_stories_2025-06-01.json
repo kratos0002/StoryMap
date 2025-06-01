@@ -1,0 +1,62 @@
+[
+  {
+    "title": "The Tell-Tale Heart",
+    "author": "Edgar Allan Poe",
+    "gutenberg_id": "2148",
+    "gutenberg_url": "https://www.gutenberg.org/ebooks/2148",
+    "description": "A psychological horror story",
+    "estimated_popularity": "high",
+    "reason": "Failed content validation",
+    "wordCount": 95043
+  },
+  {
+    "title": "The Lottery",
+    "author": "Shirley Jackson",
+    "gutenberg_id": "12345",
+    "gutenberg_url": "https://www.gutenberg.org/ebooks/12345",
+    "description": "A disturbing story about tradition and conformity",
+    "estimated_popularity": "high",
+    "reason": "Failed content validation",
+    "wordCount": 47373
+  },
+  {
+    "title": "The Metamorphosis",
+    "author": "Franz Kafka",
+    "gutenberg_id": "5200",
+    "gutenberg_url": "https://www.gutenberg.org/ebooks/5200",
+    "description": "A man transforms into an insect",
+    "estimated_popularity": "high",
+    "reason": "Failed content validation",
+    "wordCount": 21943
+  },
+  {
+    "title": "The Open Window",
+    "author": "Saki",
+    "gutenberg_id": "3689",
+    "gutenberg_url": "https://www.gutenberg.org/ebooks/3689",
+    "description": "A humorous story with an unexpected twist",
+    "estimated_popularity": "medium",
+    "reason": "Failed content validation",
+    "wordCount": 0
+  },
+  {
+    "title": "The Necklace",
+    "author": "Guy de Maupassant",
+    "gutenberg_id": "3090",
+    "gutenberg_url": "https://www.gutenberg.org/ebooks/3090",
+    "description": "A story about vanity and its consequences",
+    "estimated_popularity": "high",
+    "reason": "Failed content validation",
+    "wordCount": 491599
+  },
+  {
+    "title": "The Lady, or the Tiger?",
+    "author": "Frank R. Stockton",
+    "gutenberg_id": "3845",
+    "gutenberg_url": "https://www.gutenberg.org/ebooks/3845",
+    "description": "A story with an ambiguous ending",
+    "estimated_popularity": "medium",
+    "reason": "Failed content validation",
+    "wordCount": 0
+  }
+]
