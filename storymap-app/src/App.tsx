@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import StoryMap from './components/StoryMap';
 import StoryList from './components/StoryList';
 import StoryReader from './components/StoryReader';
+import HomePage from './components/HomePage';
 import { Story } from './data/stories';
 import './styles/enhanced.css';
+import './styles/home-page.css'; // Import the new home page styles
 
 function App() {
   const [activeView, setActiveView] = useState<'map' | 'list'>('map');
@@ -58,7 +61,8 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
   
-  return (
+  // Main app with story map/list view
+  const MainApp = () => (
     <div className={`app min-h-screen flex flex-col ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'} transition-colors duration-500`}>
       {/* App header */}
       <header className={`py-3 px-4 flex items-center justify-between border-b ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} transition-colors duration-500`}>
@@ -139,6 +143,21 @@ function App() {
         </div>
       </main>
     </div>
+  );
+  
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/stories" element={<MainApp />} />
+        <Route path="/collections/:id" element={<MainApp />} />
+        <Route path="/about" element={<div>About Page</div>} />
+        <Route path="/terms" element={<div>Terms of Service</div>} />
+        <Route path="/privacy" element={<div>Privacy Policy</div>} />
+        <Route path="/copyright" element={<div>Copyright Information</div>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
