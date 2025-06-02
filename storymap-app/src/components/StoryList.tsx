@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchStories, Story as SupabaseStory } from '../lib/supabase';
+import { fetchStoriesForList, StoryListItem } from '../lib/supabase';
 import StoryCard from './StoryCard';
 
 // Legacy Story interface for list compatibility
@@ -28,8 +28,8 @@ interface StoryListProps {
   isDarkMode?: boolean;
 }
 
-// Helper function to transform Supabase story to legacy format
-const transformStoryForList = (supabaseStory: SupabaseStory): LegacyStory | null => {
+// Transform function for StoryListItem to LegacyStory  
+const transformStoryForList = (supabaseStory: StoryListItem): LegacyStory | null => {
   // Get the first location (primary location)
   const primaryLocation = supabaseStory.story_locations?.[0]?.location;
   if (!primaryLocation) {
@@ -43,15 +43,11 @@ const transformStoryForList = (supabaseStory: SupabaseStory): LegacyStory | null
   // Extract themes
   const themes = supabaseStory.story_themes?.map(st => st.theme.name) || [];
 
+  // Get the first cultural context
+  const culturalContext = supabaseStory.cultural_contexts?.[0]?.context_text || '';
+
   // Get the first image
   const imageUrl = supabaseStory.images?.[0]?.image_url;
-
-  // Get cultural context
-  const culturalContext = supabaseStory.cultural_contexts?.[0]?.context_text || 'No cultural context available';
-
-  // Extract mood from tags (assuming mood is stored as a tag)
-  const moodTag = supabaseStory.story_tags?.find(st => st.tag.category === 'mood');
-  const mood = moodTag?.tag.name || 'Unknown';
 
   return {
     id: supabaseStory.id,
@@ -66,9 +62,9 @@ const transformStoryForList = (supabaseStory: SupabaseStory): LegacyStory | null
     },
     readingTimeMinutes: supabaseStory.reading_time_minutes,
     themes: themes,
-    mood: mood,
+    mood: themes[0] || 'Unknown', // Use first theme as mood
     previewText: supabaseStory.summary || 'No preview available',
-    fullText: supabaseStory.original_text || 'Full text not available',
+    fullText: '', // Empty since we're not fetching full text for performance
     culturalContext: culturalContext,
     imageUrl: imageUrl
   };
@@ -89,7 +85,7 @@ const StoryList: React.FC<StoryListProps> = ({ onStorySelect, isDarkMode = false
       try {
         setIsLoadingStories(true);
         setStoriesError(null);
-        const supabaseStories = await fetchStories();
+        const supabaseStories = await fetchStoriesForList();
         
         // Transform stories and filter out any that don't have location data
         const transformedStories = supabaseStories

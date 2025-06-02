@@ -1,0 +1,241 @@
+{
+  "timestamp": "2025-06-02T19:46:56.332Z",
+  "statistics": {
+    "processed": 56,
+    "cleaned": 0,
+    "errors": 56,
+    "already_clean": 0,
+    "characters_removed": 0
+  },
+  "errors": [
+    {
+      "story": "Coming Attraction",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Real Hard Sell",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Drug",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "One Man's Poison",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "A Child's Dream of a Star",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Man Outside",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Carnivore",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Nine Unlikely Tales",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Lost Art",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Ecology on Rollins Island",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Beyond Lies the Wub",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Mother West Wind's Children",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Just So Stories",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Addicts",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "With No Strings Attached",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Sarro",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Wit and Humor of America, Volume II. (of X.)",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Issahar Artifacts",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Hated",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Stories from Tagore",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Prime Difference",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Sense of Wonder",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Love of Life",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Bridge Crossing",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Chain Reaction",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Celestial Hammerlock",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Blue Jar Story Book",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Sandman’s Hour",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Faith of Men",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Skull",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Whiskaboom",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Dreamworld",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "...And It Comes Out Here",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Juvenile Delinquent",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Printcrime",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Tales of the Fish Patrol",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Circus",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Wind",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Perfect Answer",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Cry from a Far Planet",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Works of Edgar Allan Poe, The Raven Edition",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Leader",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Red One",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Ghost Stories of an Antiquary",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Hero Tales",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Little Masterpieces",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Game of Rat and Dragon",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Handyman",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Book of Dragons",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "James Pethel",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "People Soup",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Arm of the Law",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Gods of the North",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "I'm a Stranger Here Myself",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "The Nothing Equation",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    },
+    {
+      "story": "Freeway",
+      "error": "Cannot read properties of undefined (reading 'substring')"
+    }
+  ],
+  "config": {
+    "batch_size": 5,
+    "rate_limit": 2000,
+    "model": "llama-3.1-sonar-large-128k-online"
+  }
+}

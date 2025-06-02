@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchStories, Story as SupabaseStory } from '../lib/supabase';
+import { fetchStoriesForList, StoryListItem } from '../lib/supabase';
 import StoryCard from './StoryCard';
 
 // Hero section background image
@@ -8,7 +8,7 @@ import StoryCard from './StoryCard';
 import heroBackground from '../assets/hero-background.jpg';
 
 // Helper function to transform Supabase story to the format needed for display
-const transformStoryForDisplay = (supabaseStory: SupabaseStory) => {
+const transformStoryForDisplay = (supabaseStory: StoryListItem) => {
   // Get the first location (primary location)
   const primaryLocation = supabaseStory.story_locations?.[0]?.location;
   if (!primaryLocation) {
@@ -39,7 +39,7 @@ const transformStoryForDisplay = (supabaseStory: SupabaseStory) => {
     readingTimeMinutes: supabaseStory.reading_time_minutes,
     themes: themes,
     previewText: supabaseStory.summary || 'No preview available',
-    fullText: supabaseStory.original_text || 'Full text not available',
+    fullText: '', // Empty since we're not fetching full text for performance
     imageUrl: imageUrl
   };
 };
@@ -121,7 +121,7 @@ const thematicCollections = [
 ];
 
 // Featured story card component
-const FeaturedStoryCard = ({ story, isDarkMode }) => {
+const FeaturedStoryCard: React.FC<{ story: any; isDarkMode: boolean }> = ({ story, isDarkMode }) => {
   return (
     <div className="flex-shrink-0 w-72 overflow-hidden rounded-lg shadow-lg group">
       <div className="relative h-96">
@@ -142,7 +142,7 @@ const FeaturedStoryCard = ({ story, isDarkMode }) => {
         <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
           {/* Theme tags */}
           <div className="flex flex-wrap gap-2 mb-3">
-            {story.themes.slice(0, 2).map(theme => (
+            {story.themes.slice(0, 2).map((theme: string) => (
               <span 
                 key={theme} 
                 className="px-2 py-1 text-xs rounded-full bg-blue-600/70"
@@ -183,7 +183,7 @@ const FeaturedStoryCard = ({ story, isDarkMode }) => {
 };
 
 // Collection card component
-const CollectionCard = ({ collection, isDarkMode }) => {
+const CollectionCard: React.FC<{ collection: any; isDarkMode: boolean }> = ({ collection, isDarkMode }) => {
   return (
     <div 
       className={`h-64 rounded-lg overflow-hidden shadow-lg relative group ${
@@ -241,7 +241,7 @@ const CollectionCard = ({ collection, isDarkMode }) => {
 };
 
 // Story of the day component
-const StoryOfTheDay = ({ story, isDarkMode }) => {
+const StoryOfTheDay: React.FC<{ story: any; isDarkMode: boolean }> = ({ story, isDarkMode }) => {
   if (!story) return null;
   
   return (
@@ -301,7 +301,7 @@ const StoryOfTheDay = ({ story, isDarkMode }) => {
 };
 
 // Timeline component
-const Timeline = ({ isDarkMode }) => {
+const Timeline: React.FC<{ isDarkMode: boolean }> = ({ isDarkMode }) => {
   const timelinePeriods = [
     { id: 'ancient', name: 'Ancient', year: '3000 BCE - 500 CE', active: false },
     { id: 'medieval', name: 'Medieval', year: '500 - 1500', active: false },
@@ -375,7 +375,7 @@ const Timeline = ({ isDarkMode }) => {
 };
 
 // World map preview component
-const WorldMapPreview = ({ isDarkMode }) => {
+const WorldMapPreview: React.FC<{ isDarkMode: boolean }> = ({ isDarkMode }) => {
   return (
     <div className={`rounded-lg overflow-hidden shadow-lg ${
       isDarkMode ? 'bg-gray-800' : 'bg-white'
@@ -452,7 +452,7 @@ const HomePage: React.FC = () => {
     const loadStories = async () => {
       try {
         setIsLoadingStories(true);
-        const supabaseStories = await fetchStories();
+        const supabaseStories = await fetchStoriesForList();
         
         // Transform stories and filter out any that don't have location data
         const transformedStories = supabaseStories

@@ -1,0 +1,109 @@
+.translation-panel {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.translation-controls h3 {
+  margin-top: 0;
+  color: #495057;
+}
+
+.language-selector {
+  margin: 15px 0;
+}
+
+.language-selector label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.language-selector select {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.translate-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.translate-button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.translate-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 10px 0;
+  border: 1px solid #f5c6cb;
+}
+
+.translation-result {
+  margin-top: 20px;
+  border-top: 1px solid #dee2e6;
+  padding-top: 20px;
+}
+
+.translation-result h4 {
+  color: #495057;
+  margin-bottom: 15px;
+}
+
+.translation-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.original-text, .translated-text {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.original-text h5, .translated-text h5 {
+  margin: 0 0 10px 0;
+  color: #495057;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 8px;
+}
+
+.text-content h6 {
+  margin: 0 0 10px 0;
+  color: #212529;
+  font-size: 16px;
+}
+
+.text-content p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .translation-comparison {
+    grid-template-columns: 1fr;
+  }
+} 

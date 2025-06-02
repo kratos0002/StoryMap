@@ -1,7 +1,27 @@
 import { useState, useEffect } from 'react';
-import { Story } from '../data/stories';
-import { getUpdatedStories } from '../data/storyLoader';
+import TranslationPanel from './TranslationPanel';
 import '../styles/typography.css';
+
+// Story interface for the reader
+interface Story {
+  id: string;
+  title: string;
+  author: string;
+  country: string;
+  countryCode: string;
+  region: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  readingTimeMinutes: number;
+  themes: string[];
+  mood: string;
+  previewText: string;
+  fullText: string;
+  culturalContext: string;
+  imageUrl?: string;
+}
 
 interface StoryReaderProps {
   story: Story;
@@ -14,7 +34,6 @@ const StoryReader: React.FC<StoryReaderProps> = ({ story, onClose, isDarkMode: p
   const [isDarkMode, setIsDarkMode] = useState<boolean>(propsDarkMode || false);
   const [showCulturalContext, setShowCulturalContext] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(true);
-  const [currentStory, setCurrentStory] = useState<Story>(story);
   
   // Update internal dark mode state when prop changes
   useEffect(() => {
@@ -32,15 +51,6 @@ const StoryReader: React.FC<StoryReaderProps> = ({ story, onClose, isDarkMode: p
     
     return () => clearTimeout(timer);
   }, [story.id]);
-  
-  // Load story with embedded text if available
-  useEffect(() => {
-    // Get updated stories with embedded texts
-    const updatedStories = getUpdatedStories([story]);
-    if (updatedStories && updatedStories.length > 0) {
-      setCurrentStory(updatedStories[0]);
-    }
-  }, [story]);
   
   // Toggle dark mode
   const toggleDarkMode = () => {
@@ -153,27 +163,27 @@ const StoryReader: React.FC<StoryReaderProps> = ({ story, onClose, isDarkMode: p
         <div className={`max-w-3xl mx-auto ${isAnimating ? 'animate-fade-in' : ''}`}>
           {/* Story header */}
           <div className={`mb-8 ${isAnimating ? 'animate-slide-up' : ''}`}>
-            <h1 className="mb-2">{currentStory.title}</h1>
+            <h1 className="mb-2">{story.title}</h1>
             
             <div className={`flex flex-wrap items-center text-sm ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             } mb-4`}>
-              <span>By {currentStory.author}</span>
+              <span>By {story.author}</span>
               <span className="mx-2">•</span>
               <span className="flex items-center">
                 <img 
-                  src={`https://flagcdn.com/24x18/${currentStory.countryCode.toLowerCase()}.png`} 
-                  alt={currentStory.country} 
+                  src={`https://flagcdn.com/24x18/${story.countryCode.toLowerCase()}.png`} 
+                  alt={story.country} 
                   className="mr-1 h-3"
                 />
-                {currentStory.country}
+                {story.country}
               </span>
               <span className="mx-2">•</span>
-              <span>{currentStory.readingTimeMinutes} min read</span>
+              <span>{story.readingTimeMinutes} min read</span>
             </div>
             
             <div className="flex flex-wrap gap-2 mb-6">
-              {currentStory.themes.map((theme) => (
+              {story.themes.map((theme) => (
                 <span 
                   key={theme} 
                   className={`theme-tag px-3 py-1 rounded-full text-xs ${
@@ -192,53 +202,84 @@ const StoryReader: React.FC<StoryReaderProps> = ({ story, onClose, isDarkMode: p
                     : 'bg-amber-100 text-amber-800'
                 }`}
               >
-                {currentStory.mood}
+                {story.mood}
               </span>
             </div>
           </div>
           
           {/* Story text */}
-          <div className={`story-content ${isAnimating ? 'animate-slide-up stagger-1' : ''}`}>
-            {currentStory.fullText.split('\n\n').map((paragraph, index) => (
-              <p key={index} className="mb-4">{paragraph}</p>
-            ))}
-          </div>
-          
-          {/* Cultural context section */}
-          <div className={`mt-12 pt-8 border-t ${
-            isDarkMode ? 'border-gray-800' : 'border-gray-200'
-          } ${isAnimating ? 'animate-slide-up stagger-2' : ''}`}>
-            <button 
-              onClick={toggleCulturalContext}
-              className={`flex items-center justify-between w-full text-left ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              } mb-4`}
-            >
-              <h2 className="text-xl font-serif">Cultural Context</h2>
-              <svg 
-                className={`h-5 w-5 transform transition-transform ${showCulturalContext ? 'rotate-180' : ''}`} 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            
-            {showCulturalContext && (
-              <div className={`cultural-context ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              } animate-slide-up`}>
-                {currentStory.culturalContext.split('\n\n').map((paragraph, index) => (
-                  <p key={index} className="mb-4">{paragraph}</p>
-                ))}
+          <div className={`story-content prose prose-lg max-w-none ${
+            isDarkMode ? 'prose-invert' : ''
+          } ${isAnimating ? 'animate-fade-in animation-delay-300' : ''}`}>
+            {story.fullText ? (
+              story.fullText.split('\n').map((paragraph, index) => 
+                paragraph.trim() ? (
+                  <p key={index} className="mb-4 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ) : null
+              )
+            ) : (
+              <div className={`text-center py-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                <p className="mb-4">Story content is being loaded...</p>
+                <p className="text-sm">{story.previewText}</p>
               </div>
             )}
           </div>
-          
-          {/* Add bottom padding to ensure content is scrollable past the end */}
-          <div className="h-16"></div>
+
+          {/* Cultural context toggle */}
+          <div className={`mt-12 ${isAnimating ? 'animate-fade-in animation-delay-600' : ''}`}>
+            <button 
+              onClick={toggleCulturalContext}
+              className={`w-full p-4 rounded-lg border transition-colors ${
+                isDarkMode 
+                  ? 'border-gray-700 bg-gray-800 text-gray-200 hover:bg-gray-700' 
+                  : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-medium">Cultural Context</span>
+                <svg 
+                  className={`h-5 w-5 transition-transform ${showCulturalContext ? 'rotate-180' : ''}`}
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </button>
+            
+            {showCulturalContext && (
+              <div className={`mt-4 p-6 rounded-lg ${
+                isDarkMode ? 'bg-gray-800' : 'bg-blue-50'
+              } transition-all duration-300 animate-slide-down`}>
+                <div className={`prose ${isDarkMode ? 'prose-invert' : ''} max-w-none`}>
+                  {story.culturalContext ? (
+                    story.culturalContext.split('\n').map((paragraph, index) => 
+                      paragraph.trim() ? (
+                        <p key={index} className="mb-3">
+                          {paragraph}
+                        </p>
+                      ) : null
+                    )
+                  ) : (
+                    <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
+                      No cultural context available for this story.
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Translation panel */}
+          <div className={`mt-8 ${isAnimating ? 'animate-fade-in animation-delay-900' : ''}`}>
+            <TranslationPanel 
+              story={story}
+            />
+          </div>
         </div>
       </div>
     </div>

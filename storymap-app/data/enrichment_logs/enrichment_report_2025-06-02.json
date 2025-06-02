@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-06-02T18:01:03.623Z",
+  "statistics": {
+    "processed": 30,
+    "enriched": 30,
+    "errors": 0,
+    "locations_added": 33,
+    "themes_added": 34,
+    "authors_enriched": 13
+  },
+  "errors": [],
+  "configuration": {
+    "batch_size": 10,
+    "rate_limit_ms": 2000,
+    "model": "llama-3.1-sonar-large-128k-online"
+  }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { fetchStories, Story as SupabaseStory } from '../lib/supabase';
+import { fetchStories, Story as SupabaseStory, fetchStoriesForList, StoryListItem } from '../lib/supabase';
 
 // Legacy Story interface for map compatibility
 interface LegacyStory {
@@ -29,8 +29,8 @@ interface StoryMapProps {
   isDarkMode?: boolean;
 }
 
-// Helper function to transform Supabase story to legacy format
-const transformStoryForMap = (supabaseStory: SupabaseStory): LegacyStory | null => {
+// Helper function to transform Supabase story to legacy format for map
+const transformStoryForMap = (supabaseStory: StoryListItem): LegacyStory | null => {
   // Get the first location (primary location)
   const primaryLocation = supabaseStory.story_locations?.[0]?.location;
   if (!primaryLocation) {
@@ -69,7 +69,7 @@ const transformStoryForMap = (supabaseStory: SupabaseStory): LegacyStory | null 
     themes: themes,
     mood: mood,
     previewText: supabaseStory.summary || 'No preview available',
-    fullText: supabaseStory.original_text || 'Full text not available',
+    fullText: '', // Empty since we're not fetching full text for performance
     culturalContext: culturalContext,
     imageUrl: imageUrl
   };
@@ -101,7 +101,7 @@ const StoryMap: React.FC<StoryMapProps> = ({ onStorySelect, isDarkMode = false }
       try {
         setIsLoadingStories(true);
         setStoriesError(null);
-        const supabaseStories = await fetchStories();
+        const supabaseStories = await fetchStoriesForList();
         
         // Transform stories and filter out any that don't have location data
         const transformedStories = supabaseStories

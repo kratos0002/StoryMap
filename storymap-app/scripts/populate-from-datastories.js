@@ -310,14 +310,14 @@ class DataStoriesPopulator {
 
 async function main() {
   try {
-    console.log('🎯 DataStories Database Population (Batch 2: Stories 51-100)');
+    console.log('🎯 DataStories Database Population (Batch 6: Stories 251-300)');
     console.log('===========================================================\n');
     
     const populator = new DataStoriesPopulator();
     
-    // Load data from CSV files (stories 51-100)
-    await populator.loadBooksMetadata(50, 50); // limit=50, offset=50
-    await populator.loadStoriesContent(50, 50);
+    // Load data from CSV files (stories 251-300)
+    await populator.loadBooksMetadata(50, 250); // limit=50, offset=250
+    await populator.loadStoriesContent(50, 250);
     
     // Process stories (up to 30 for this batch)
     await populator.processStories(30);

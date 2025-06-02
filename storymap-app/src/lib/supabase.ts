@@ -67,6 +67,66 @@ export interface Story {
   }>;
 }
 
+// Lightweight version for list views (without original_text)
+export interface StoryListItem {
+  id: string;
+  title: string;
+  summary: string;
+  publication_year?: number;
+  reading_time_minutes: number;
+  word_count?: number;
+  popularity_score?: number;
+  writing_era?: string;
+  slug: string;
+  created_at: string;
+  updated_at: string;
+  story_authors?: Array<{
+    author: {
+      name: string;
+      birth_year?: number;
+      death_year?: number;
+    }
+  }>;
+  story_locations?: Array<{
+    location: {
+      name: string;
+      country_code: string;
+      region: string;
+      latitude: number;
+      longitude: number;
+    }
+  }>;
+  story_themes?: Array<{
+    theme: {
+      name: string;
+    }
+  }>;
+  story_tags?: Array<{
+    tag: {
+      name: string;
+      category: string;
+    }
+  }>;
+  story_time_periods?: Array<{
+    time_period: {
+      name: string;
+      start_year: number;
+      end_year?: number;
+    }
+  }>;
+  story_reading_levels?: Array<{
+    reading_level: {
+      name: string;
+    }
+  }>;
+  cultural_contexts?: Array<{
+    context_text: string;
+  }>;
+  images?: Array<{
+    image_url: string;
+  }>;
+}
+
 // Enhanced filter options interface
 export interface FilterOptions {
   themes?: string[];
@@ -140,6 +200,78 @@ export const fetchStories = async (): Promise<Story[]> => {
   }
 
   return data || [];
+};
+
+// Fetch stories for list/browse view (without full text for performance)
+export const fetchStoriesForList = async (): Promise<StoryListItem[]> => {
+  const { data, error } = await supabase
+    .from('stories')
+    .select(`
+      id,
+      title,
+      summary,
+      publication_year,
+      reading_time_minutes,
+      word_count,
+      popularity_score,
+      writing_era,
+      slug,
+      created_at,
+      updated_at,
+      story_authors(
+        author:authors(
+          name,
+          birth_year,
+          death_year
+        )
+      ),
+      story_locations(
+        location:locations(
+          name,
+          country_code,
+          region,
+          latitude,
+          longitude
+        )
+      ),
+      story_themes(
+        theme:themes(
+          name
+        )
+      ),
+      story_tags(
+        tag:tags(
+          name,
+          category
+        )
+      ),
+      story_time_periods(
+        time_period:time_periods(
+          name,
+          start_year,
+          end_year
+        )
+      ),
+      story_reading_levels(
+        reading_level:reading_levels(
+          name
+        )
+      ),
+      cultural_contexts(
+        context_text
+      ),
+      images(
+        image_url
+      )
+    `)
+    .order('title');
+
+  if (error) {
+    console.error('Error fetching stories for list:', error);
+    throw error;
+  }
+
+  return (data as unknown as StoryListItem[]) || [];
 };
 
 // Fetch a single story with all details
@@ -285,18 +417,61 @@ export const searchStories = async (options: FilterOptions): Promise<Story[]> =>
         ).join(',');
         query = query.or(themeFilters);
       } else {
-        // For AND logic (default), we need to join multiple conditions
-        // This is more complex and might require multiple queries
-        // For simplicity, we'll use the first theme only for now
-        query = query
+        // For AND logic (default), we use a simpler approach
+        // Note: Complex AND logic across relationships would require multiple queries
+        // For now, we filter by the first theme
+        const { data, error } = await supabase
           .from('stories')
           .select(`
             *,
             story_themes!inner(
               theme:themes!inner(name)
+            ),
+            story_authors(
+              author:authors(
+                name,
+                birth_year,
+                death_year
+              )
+            ),
+            story_locations(
+              location:locations(
+                name,
+                country_code,
+                region,
+                latitude,
+                longitude
+              )
+            ),
+            story_tags(
+              tag:tags(
+                name,
+                category
+              )
+            ),
+            story_time_periods(
+              time_period:time_periods(
+                name,
+                start_year,
+                end_year
+              )
+            ),
+            story_reading_levels(
+              reading_level:reading_levels(
+                name
+              )
+            ),
+            cultural_contexts(
+              context_text
+            ),
+            images(
+              image_url
             )
           `)
           .eq('story_themes.theme.name', options.themes[0]);
+          
+        if (error) throw error;
+        return data || [];
       }
     }
     
@@ -308,15 +483,54 @@ export const searchStories = async (options: FilterOptions): Promise<Story[]> =>
         ).join(',');
         query = query.or(regionFilters);
       } else {
-        query = query
+        const { data, error } = await supabase
           .from('stories')
           .select(`
             *,
             story_locations!inner(
               location:locations!inner(region)
+            ),
+            story_authors(
+              author:authors(
+                name,
+                birth_year,
+                death_year
+              )
+            ),
+            story_themes(
+              theme:themes(
+                name
+              )
+            ),
+            story_tags(
+              tag:tags(
+                name,
+                category
+              )
+            ),
+            story_time_periods(
+              time_period:time_periods(
+                name,
+                start_year,
+                end_year
+              )
+            ),
+            story_reading_levels(
+              reading_level:reading_levels(
+                name
+              )
+            ),
+            cultural_contexts(
+              context_text
+            ),
+            images(
+              image_url
             )
           `)
           .eq('story_locations.location.region', options.regions[0]);
+          
+        if (error) throw error;
+        return data || [];
       }
     }
     
@@ -360,7 +574,7 @@ export const fetchRelatedStories = async (storyId: string, limit: number = 3): P
     }
     
     // Fetch full details for the similar stories
-    const storyIds = similarStories.map(s => s.story_id);
+    const storyIds = similarStories.map((s: any) => s.story_id);
     const { data, error } = await supabase
       .from('stories')
       .select(`

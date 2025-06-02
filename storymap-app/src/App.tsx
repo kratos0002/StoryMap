@@ -4,15 +4,37 @@ import StoryMap from './components/StoryMap';
 import StoryList from './components/StoryList';
 import StoryReader from './components/StoryReader';
 import HomePage from './components/HomePage';
-import { Story } from './data/stories';
+import { fetchStoryWithDetails, Story as SupabaseStory } from './lib/supabase';
 import './styles/enhanced.css';
 import './styles/home-page.css'; // Import the new home page styles
 
+// Legacy Story interface for compatibility with components
+interface LegacyStory {
+  id: string;
+  title: string;
+  author: string;
+  country: string;
+  countryCode: string;
+  region: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  readingTimeMinutes: number;
+  themes: string[];
+  mood: string;
+  previewText: string;
+  fullText: string;
+  culturalContext: string;
+  imageUrl?: string;
+}
+
 function App() {
   const [activeView, setActiveView] = useState<'map' | 'list'>('map');
-  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+  const [selectedStory, setSelectedStory] = useState<LegacyStory | null>(null);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+  const [isLoadingStory, setIsLoadingStory] = useState<boolean>(false);
   
   // Check system preference for dark mode
   useEffect(() => {
@@ -29,13 +51,83 @@ function App() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
   
+  // Transform Supabase story to legacy format
+  const transformSupabaseStoryToLegacy = (supabaseStory: SupabaseStory): LegacyStory => {
+    // Get the first location (primary location)
+    const primaryLocation = supabaseStory.story_locations?.[0]?.location;
+    const defaultLocation = {
+      name: 'Unknown Location',
+      country_code: 'XX',
+      region: 'Unknown',
+      latitude: 0,
+      longitude: 0
+    };
+    
+    const location = primaryLocation || defaultLocation;
+    
+    // Get the first author
+    const primaryAuthor = supabaseStory.story_authors?.[0]?.author?.name || 'Unknown Author';
+    
+    // Extract themes
+    const themes = supabaseStory.story_themes?.map(st => st.theme.name) || [];
+    
+    // Get the first image
+    const imageUrl = supabaseStory.images?.[0]?.image_url;
+    
+    // Get cultural context
+    const culturalContext = supabaseStory.cultural_contexts?.[0]?.context_text || 'No cultural context available';
+    
+    // Extract mood from tags (assuming mood is stored as a tag)
+    const moodTag = supabaseStory.story_tags?.find(st => st.tag.category === 'mood');
+    const mood = moodTag?.tag.name || themes[0] || 'Unknown';
+    
+    return {
+      id: supabaseStory.id,
+      title: supabaseStory.title,
+      author: primaryAuthor,
+      country: location.name,
+      countryCode: location.country_code,
+      region: location.region,
+      coordinates: {
+        lat: location.latitude,
+        lng: location.longitude
+      },
+      readingTimeMinutes: supabaseStory.reading_time_minutes,
+      themes: themes,
+      mood: mood,
+      previewText: supabaseStory.summary || 'No preview available',
+      fullText: supabaseStory.original_text || 'Story content not available',
+      culturalContext: culturalContext,
+      imageUrl: imageUrl
+    };
+  };
+  
   // Handle story selection
-  const handleStorySelect = (story: Story) => {
+  const handleStorySelect = async (story: LegacyStory) => {
     setIsTransitioning(true);
-    setTimeout(() => {
-      setSelectedStory(story);
+    setIsLoadingStory(true);
+    
+    try {
+      // Fetch the full story details from Supabase
+      const fullStory = await fetchStoryWithDetails(story.id);
+      
+      if (fullStory) {
+        const legacyStory = transformSupabaseStoryToLegacy(fullStory);
+        setTimeout(() => {
+          setSelectedStory(legacyStory);
+          setIsTransitioning(false);
+          setIsLoadingStory(false);
+        }, 300);
+      } else {
+        console.error('Story not found:', story.id);
+        setIsTransitioning(false);
+        setIsLoadingStory(false);
+      }
+    } catch (error) {
+      console.error('Error loading story:', error);
       setIsTransitioning(false);
-    }, 300);
+      setIsLoadingStory(false);
+    }
   };
   
   // Handle closing story reader
@@ -116,8 +208,20 @@ function App() {
       
       {/* Main content */}
       <main className="flex-1 relative overflow-hidden">
+        {/* Loading overlay for story loading */}
+        {isLoadingStory && (
+          <div className={`absolute inset-0 z-30 flex items-center justify-center ${isDarkMode ? 'bg-gray-900 bg-opacity-90' : 'bg-white bg-opacity-80'}`}>
+            <div className="text-center">
+              <div className={`inline-block w-12 h-12 border-4 ${isDarkMode ? 'border-blue-400' : 'border-blue-600'} border-t-transparent rounded-full animate-spin`}></div>
+              <p className={`mt-4 text-lg font-serif ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+                Loading story...
+              </p>
+            </div>
+          </div>
+        )}
+        
         {/* Story reader overlay */}
-        {selectedStory && (
+        {selectedStory && !isLoadingStory && (
           <div className={`absolute inset-0 z-20 ${isTransitioning ? 'animate-fade-in' : ''}`}>
             <StoryReader 
               story={selectedStory} 
@@ -128,7 +232,7 @@ function App() {
         )}
         
         {/* Map and list views */}
-        <div className={`h-full transition-opacity duration-300 ${selectedStory ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`h-full transition-opacity duration-300 ${selectedStory && !isLoadingStory ? 'opacity-0' : 'opacity-100'}`}>
           <div className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
             isTransitioning ? 'opacity-0' : 'opacity-100'
           } ${activeView === 'map' ? 'translate-x-0' : '-translate-x-full'}`}>
